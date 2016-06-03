@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Currency Conversions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection, tv" />
+<link rel="stylesheet" href="css/style-print.css" type="text/css" media="print" />
+
+<script type="text/javascript">
+    
+    function setCV()
+   {
+       var toValue;
+       var cv;
+       
+       for(var i=0;i<7;i++)
+       {
+           if(f1.from.selectedIndex==i)
+               toValue=f1.from.value;
+       }
+       
+       toValue=1.00/toValue;
+       
+        for(var i=0;i<7;i++)
+       {
+           if(f1.to.selectedIndex==i)
+               cv=toValue*f1.to.value;
+       }
+       
+       f1.cv.value=cv;
+       
+   }
+   
+      function currConvert()
+   {
+       if(isNaN(parseInt(f1.c1.value))||isNaN(parseInt(f1.cv.value)))
+       {
+           document.getElementById("result").innerHTML="Please enter correct values.";
+           return false;
+       }
+       else
+       {
+        var TO="";
+        var FROM="";
+        var result="";
+        var cv=f1.cv.value;
+       
+         for(var i=0;i<7;i++)
+        {
+           if(f1.to.selectedIndex==i)
+               TO=f1.to.options[i].getAttribute('data-cname');
+           
+           if(f1.from.selectedIndex==i)
+               FROM=f1.from.options[i].getAttribute('data-cname');
+        }
+       
+        var Result=(f1.c1.value*cv).toFixed(4);
+        result+="<h3>"+f1.c1.value+" "+FROM+" / "+TO+" = "+Result;
+        document.getElementById("result").innerHTML=result;
+   }
+   }
+   
+   
+</script>
+
+
+
+
+</head>
+<body>
+<div id="wrapper">
+  <div class="title">
+    <div class="title-top">
+      <div class="title-left">
+        <div class="title-right">
+          <div class="title-bottom">
+            <div class="title-top-left">
+              <div class="title-bottom-left">
+                <div class="title-top-right">
+                  <div class="title-bottom-right">
+                    <h1><a href="index.html"> <span>Conversions</span> WEBSITE</a></h1>
+                    <p>Mathematical, Geometrical, Temperature and all other types of conversions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="noscreen" />
+  <div class="content">
+    <div class="column-left">
+      <h3>MENU</h3>
+      <a href="#skip-menu" class="hidden">Skip menu</a>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="curr.html" class="active">Currency Conversions</a></li>
+        <li><a href="math.html">Mathematical Conversions</a></li>
+        <li><a href="number.html">Number Conversions: Binary/Octal/Hexadecimal</a></li>
+        <li><a href="speed.html">Speed Conversions</a></li>
+        <li><a href="temp.html">Temperature Conversions</a></li>
+      </ul>
+    </div>
+    <div id="skip-menu"></div>
+    <div class="column-right">
+      <div class="box">
+        <div class="box-top"></div>
+        <div class="box-in">
+          <h2>Currency Conversion</h2>
+          <p>Convert among the most popular currencies. Just enter the amount and select the currency you want to convert from and to.
+          To set the updated currency values use the optional  conversion value input below.
+          </p>
+          <br />
+          
+              <form name="f1">
+                  <center>
+                      <table cellpadding="50">
+                  <tr><th>From</th><th>Input Value</th><th>To</th><th>Conversion Value</th><th></th></tr>
+                  <tr>
+                      <td>
+                          <select name="from" onchange="setCV();" onfocus="this.selectedIndex = -1;">
+                            <option value="1.00" data-cname="USD">USD</option>
+                            <option value="60.62" data-cname="INR">INR</option>
+                            <option value="0.776" data-cname="EUR">EUR</option>
+                            <option value="0.62" data-cname="GBP">GBP</option>
+                            <option value="3.67" data-cname="AED">AED</option>
+                            <option value="1.08" data-cname="AUD">AUD</option>
+                            <option value="1.10" data-cname="CAD">CAD</option>
+                          </select>
+                      </td>
+                      <td><input type="number" name="c1" value="1.00">
+                      <td>
+                          <select name="to" onchange="setCV();" onfocus="this.selectedIndex = -1;">
+                            <option value="1.00" data-cname="USD">USD</option>
+                            <option value="60.62" data-cname="INR">INR</option>
+                            <option value="0.776" data-cname="EUR">EUR</option>
+                            <option value="0.62" data-cname="GBP">GBP</option>
+                            <option value="3.67" data-cname="AED">AED</option>
+                            <option value="1.08" data-cname="AUD">AUD</option>
+                            <option value="1.10" data-cname="CAD">CAD</option>
+                          </select>
+                      </td>
+
+                      <td><input type="number" name="cv" value="1.00"></td>
+                      <td><input type="button" value="Convert" onClick="currConvert()"></td>
+                 </tr>
+              </table>
+                 
+          </form>
+          <br><br>
+          <p>
+          <div id="result"></div>
+          </p>
+           </center>
+        </div>
+      </div>
+      <div class="box-bottom">
+        <hr class="noscreen" />
+        <div class="footer-info-left"><a href="index.html">Conversions Website</a>, 2014. All rights reserved.</div>
+        <div class="footer-info-right">Amandeep Singh & Sudhir Verma</div></div>
+    </div>
+    <div class="cleaner">&nbsp;</div>
+  </div>
+</div>
+</body>
+</html>

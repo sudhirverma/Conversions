@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Number Conversions (Binary, Octal, Decimal, HexaDecimal)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection, tv" />
+<link rel="stylesheet" href="css/style-print.css" type="text/css" media="print" />
+
+<script type="text/javascript">
+
+   function numberConvert()
+   {
+       var TO="";
+       var FROM="";
+       var result="";
+       var base;
+       var no=f1.c1.value;
+       
+       for(var i=0;i<4;i++)
+       {
+           if(f1.from.selectedIndex==i)
+               base=f1.from.value;
+       }
+       
+       if(base==10)
+       {
+           for(i=0;i<no.length;i++)
+           {
+               
+                if(!(no.charCodeAt(i)>47&&no.charCodeAt(i)<58))
+                {
+                    document.getElementById("result").innerHTML="Please enter input value in correct format.<br>Binary: 1 or 0 accepted<br>Octal: 0 to 8 accepted<br>HexaDecimal: 0-9 and a-f accepted";
+                    return false;
+                }
+           }
+       }
+       
+       if(base==2)
+       {
+           for(i=0;i<no.length;i++)
+           {
+               
+                if(no.charAt(i)!=='1'&&no.charAt(i)!=='0')
+                {
+                    document.getElementById("result").innerHTML="Please enter input value in correct format.<br>Binary: 1 or 0 accepted<br>Octal: 0 to 7 accepted<br>HexaDecimal: 0-9 and a-f accepted";
+                    return false;
+                }
+           }
+       }
+       
+       if(base==8)
+       {
+           for(i=0;i<no.length;i++)
+           {
+               
+                if(!(no.charCodeAt(i)>47&&no.charCodeAt(i)<56))
+                {
+                    document.getElementById("result").innerHTML="Please enter input value in correct format.<br>Binary: 1 or 0 accepted<br>Octal: 0 to 7 accepted<br>HexaDecimal: 0-9 and a-f accepted";
+                    return false;
+                }
+           }
+       }
+       
+       if(base==16)
+       {
+           for(i=0;i<no.length;i++)
+           {
+               
+                if(!((no.charCodeAt(i)>47&&no.charCodeAt(i)<58)||(no.charCodeAt(i)>64&&no.charCodeAt(i)<71)||(no.charCodeAt(i)>96&&no.charCodeAt(i)<103)))
+                {
+                    document.getElementById("result").innerHTML="Please enter input value in correct format.<br>Binary: 1 or 0 accepted<br>Octal: 0 to 7 accepted<br>HexaDecimal: 0-9 and a-f accepted";
+                    return false;
+                }
+           }
+       }
+       
+        dec = parseInt(no, base);
+       
+       for(var i=0;i<4;i++)
+       {
+           if(f1.to.selectedIndex==i)
+               base=f1.to.value;
+       }
+       
+        Result = dec.toString(base);
+        
+       for(var i=0;i<4;i++)
+       {
+           if(f1.to.selectedIndex==i)
+               TO=f1.to.options[i].getAttribute('data-cname');
+           
+           if(f1.from.selectedIndex==i)
+               FROM=f1.from.options[i].getAttribute('data-cname');
+       }
+       
+      
+       result+="<h3>"+FROM+" Number "+no+" is "+Result+" in "+TO;
+       document.getElementById("result").innerHTML=result;
+   }
+   
+   
+</script>
+
+
+
+
+</head>
+<body>
+<div id="wrapper">
+  <div class="title">
+    <div class="title-top">
+      <div class="title-left">
+        <div class="title-right">
+          <div class="title-bottom">
+            <div class="title-top-left">
+              <div class="title-bottom-left">
+                <div class="title-top-right">
+                  <div class="title-bottom-right">
+                    <h1><a href="index.html"> <span>Conversions</span> WEBSITE</a></h1>
+                    <p>Mathematical, Geometrical, Temperature and all other types of conversions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="noscreen" />
+  <div class="content">
+    <div class="column-left">
+      <h3>MENU</h3>
+      <a href="#skip-menu" class="hidden">Skip menu</a>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="curr.html">Currency Conversions</a></li>
+        <li><a href="math.html">Mathematical Conversions</a></li>
+        <li><a href="number.html" class="active">Number Conversions: Binary/Octal/Hexadecimal</a></li>
+        <li><a href="speed.html">Speed Conversions</a></li>
+        <li><a href="temp.html">Temperature Conversions</a></li>
+      </ul>
+    </div>
+    <div id="skip-menu"></div>
+    <div class="column-right">
+      <div class="box">
+        <div class="box-top"></div>
+        <div class="box-in">
+          <h2>Number Conversions</h2>
+          <p>Convert among the most popular bases of numbers. Currently supported are Binary, Octal, Decimal and Hexadecimal.
+          </p>
+          <br />
+          
+              <form name="f1">
+                  <center>
+                      <table cellpadding="50">
+                  <tr><th>From</th><th>Input Value</th><th>To</th><th></th></tr>
+                  <tr>
+                      <td>
+                          <select name="from">
+                            <option value="10" data-cname="Decimal" selected>Decimal</option>
+                            <option value="2" data-cname="Binary">Binary</option>
+                            <option value="8" data-cname="Octal">Octal</option>
+                            <option value="16" data-cname="HexaDecimal">HexaDecimal</option>
+                          </select>
+                      </td>
+                      <td><input type="text" name="c1">
+                      <td>
+                          <select name="to">
+                            <option value="10" data-cname="Decimal" selected>Decimal</option>
+                            <option value="2" data-cname="Binary">Binary</option>
+                            <option value="8" data-cname="Octal">Octal</option>
+                            <option value="16" data-cname="HexaDecimal">HexaDecimal</option>
+                          </select>
+                      </td>
+
+                      <td><input type="button" value="Convert" onClick="numberConvert()"></td>
+                 </tr>
+              </table>
+                 
+          </form>
+          <br><br>
+          <p>
+          <div id="result"></div>
+          </p>
+           </center>
+        </div>
+      </div>
+      <div class="box-bottom">
+        <hr class="noscreen" />
+        <div class="footer-info-left"><a href="index.html">Conversions Website</a>, 2014. All rights reserved.</div>
+        <div class="footer-info-right">Amandeep Singh & Sudhir Verma</div></div>
+    </div>
+    <div class="cleaner">&nbsp;</div>
+  </div>
+</div>
+</body>
+</html>

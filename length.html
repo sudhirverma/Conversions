@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Weight Conversions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection, tv" />
+<link rel="stylesheet" href="css/style-print.css" type="text/css" media="print" />
+
+<script type="text/javascript">
+    
+    window.cv=1.00;
+    
+    function setCV()
+   {
+       var toValue;
+       
+       for(var i=0;i<7;i++)
+       {
+           if(f1.from.selectedIndex==i)
+               toValue=f1.from.value;
+       }
+       
+       toValue=1.00/toValue;
+       
+        for(var i=0;i<7;i++)
+       {
+           if(f1.to.selectedIndex==i)
+               cv=toValue*f1.to.value;
+       }
+       
+   }
+   
+      function lengthConvert()
+   {
+       var TO="";
+       var FROM="";
+       var result="";
+       
+       for(var i=0;i<7;i++)
+       {
+           if(f1.to.selectedIndex==i)
+               TO=f1.to.options[i].getAttribute('data-cname');
+           
+           if(f1.from.selectedIndex==i)
+               FROM=f1.from.options[i].getAttribute('data-cname');
+       }
+       
+       var resultC=(f1.c1.value*cv).toFixed(4);
+       result+="<h3>"+f1.c1.value+" "+FROM+" = "+resultC+" "+TO;
+       document.getElementById("result").innerHTML=result;
+       
+   }
+   
+   
+</script>
+
+
+
+
+</head>
+<body>
+<div id="wrapper">
+  <div class="title">
+    <div class="title-top">
+      <div class="title-left">
+        <div class="title-right">
+          <div class="title-bottom">
+            <div class="title-top-left">
+              <div class="title-bottom-left">
+                <div class="title-top-right">
+                  <div class="title-bottom-right">
+                    <h1><a href="index.html"> <span>Conversions</span> WEBSITE</a></h1>
+                    <p>Mathematical, Geometrical, Temperature and all other types of conversions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="noscreen" />
+  <div class="content">
+    <div class="column-left">
+      <h3>MENU</h3>
+      <a href="#skip-menu" class="hidden">Skip menu</a>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="curr.html">Currency Conversions</a></li>
+        <li><a href="math.html" class="active">Mathematical Conversions</a></li>
+        <li><a href="number.html">Number Conversions: Binary/Octal/Hexadecimal</a></li>
+        <li><a href="speed.html">Speed Conversions</a></li>
+        <li><a href="temp.html">Temperature Conversions</a></li>
+      </ul>
+    </div>
+    <div id="skip-menu"></div>
+    <div class="column-right">
+      <div class="box">
+        <div class="box-top"></div>
+        <div class="box-in">
+          <h2>Length and Distance Conversion</h2>
+          <p>Convert among the most popular units of length and distance. Just enter the amount and select the unit from which you want to
+              convert and to what unit you want to convert.
+          </p>
+          <br />
+          
+              <form name="f1">
+                  <center>
+                      <table cellpadding="50">
+                  <tr><th>From</th><th>Input Value</th><th>To</th><th></th></tr>
+                  <tr>
+                      <td>
+                          <select name="from" onchange="setCV();" onfocus="this.selectedIndex = -1;">
+                            <option value="1.00" data-cname="Kilometer" selected>Kilometer</option>
+                            <option value="1000.00" data-cname="Meter">Meter</option>
+                            <option value="100000.00" data-cname="Centimeter">Centimeter</option>
+                            <option value="3280.839" data-cname="Feet">Feet</option>
+                            <option value="39370.09" data-cname="Inch">Inch</option>
+                            <option value="0.621" data-cname="Mile">Mile</option>
+                            <option value="1093.61" data-cname="Yard">Yard</option>
+                          </select>
+                      </td>
+                      <td><input type="number" name="c1" value="1.00">
+                      <td>
+                          <select name="to" onchange="setCV();" onfocus="this.selectedIndex = -1;">
+                            <option value="1.00" data-cname="Kilometer" selected>Kilometer</option>
+                            <option value="1000.00" data-cname="Meter">Meter</option>
+                            <option value="100000.00" data-cname="Centimeter">Centimeter</option>
+                            <option value="3280.839" data-cname="Feet">Feet</option>
+                            <option value="39370.09" data-cname="Inch">Inch</option>
+                            <option value="0.621" data-cname="Mile">Mile</option>
+                            <option value="1093.61" data-cname="Yard">Yard</option>
+                          </select>
+                      </td>
+
+                      <td><input type="button" value="Convert" onClick="lengthConvert()"></td>
+                 </tr>
+              </table>
+                 
+          </form>
+          <br><br>
+          <p>
+          <div id="result"></div>
+          </p>
+           </center>
+        </div>
+      </div>
+      <div class="box-bottom">
+         <hr class="noscreen" />
+        <div class="footer-info-left"><a href="index.html">Conversions Website</a>, 2014. All rights reserved.</div>
+        <div class="footer-info-right">Amandeep Singh & Sudhir Verma</div></div>
+    </div>
+    <div class="cleaner">&nbsp;</div>
+  </div>
+</div>
+</body>
+</html>
