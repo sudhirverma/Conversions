@@ -7,60 +7,52 @@
 <link rel="stylesheet" href="css/style-print.css" type="text/css" media="print" />
 
 <script type="text/javascript">
-    
-    function setCV()
-   {
+
+  function setCV() {
        var toValue;
        var cv;
-       
-       for(var i=0;i<7;i++)
-       {
-           if(f1.from.selectedIndex==i)
-               toValue=f1.from.value;
+
+       for(var i=0;i<7;i++) {
+         if(f1.from.selectedIndex==i) {
+           toValue=f1.from.value;
+         }
        }
-       
+
        toValue=1.00/toValue;
-       
-        for(var i=0;i<7;i++)
-       {
-           if(f1.to.selectedIndex==i)
-               cv=toValue*f1.to.value;
+       for(var i=0;i<7;i++) {
+         if(f1.to.selectedIndex==i) {
+           cv=toValue*f1.to.value;
+         }
        }
-       
        f1.cv.value=cv;
-       
    }
-   
-      function currConvert()
-   {
-       if(isNaN(parseInt(f1.c1.value))||isNaN(parseInt(f1.cv.value)))
-       {
-           document.getElementById("result").innerHTML="Please enter correct values.";
-           return false;
-       }
-       else
-       {
-        var TO="";
-        var FROM="";
-        var result="";
-        var cv=f1.cv.value;
-       
-         for(var i=0;i<7;i++)
-        {
-           if(f1.to.selectedIndex==i)
-               TO=f1.to.options[i].getAttribute('data-cname');
-           
-           if(f1.from.selectedIndex==i)
-               FROM=f1.from.options[i].getAttribute('data-cname');
-        }
-       
-        var Result=(f1.c1.value*cv).toFixed(4);
-        result+="<h3>"+f1.c1.value+" "+FROM+" / "+TO+" = "+Result;
-        document.getElementById("result").innerHTML=result;
-   }
-   }
-   
-   
+
+   function currConvert() {
+     if(isNaN(parseInt(f1.c1.value))||isNaN(parseInt(f1.cv.value))) {
+       document.getElementById("result").innerHTML="Please enter correct values.";
+      return false;
+    }
+    else {
+      var TO="";
+      var FROM="";
+      var result="";
+      var cv=f1.cv.value;
+
+      for(var i=0;i<7;i++) {
+        if(f1.to.selectedIndex==i)
+          TO=f1.to.options[i].getAttribute('data-cname');
+
+        if(f1.from.selectedIndex==i)
+          FROM=f1.from.options[i].getAttribute('data-cname');
+      }
+
+      var Result=(f1.c1.value*cv).toFixed(4);
+      result+="<h3>"+f1.c1.value+" "+FROM+" / "+TO+" = "+Result;
+      document.getElementById("result").innerHTML=result;
+    }
+  }
+
+
 </script>
 
 
@@ -113,7 +105,7 @@
           To set the updated currency values use the optional  conversion value input below.
           </p>
           <br />
-          
+
               <form name="f1">
                   <center>
                       <table cellpadding="50">
@@ -147,7 +139,7 @@
                       <td><input type="button" value="Convert" onClick="currConvert()"></td>
                  </tr>
               </table>
-                 
+
           </form>
           <br><br>
           <p>

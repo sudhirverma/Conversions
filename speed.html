@@ -7,56 +7,52 @@
 <link rel="stylesheet" href="css/style-print.css" type="text/css" media="print" />
 
 <script type="text/javascript">
-    
+
     window.cv=1.00;
-    
+
     function setCV()
    {
        var toValue;
-       
+
        for(var i=0;i<3;i++)
        {
            if(f1.from.selectedIndex==i)
                toValue=f1.from.value;
        }
-       
+
        toValue=1.00/toValue;
-       
+
         for(var i=0;i<3;i++)
        {
            if(f1.to.selectedIndex==i)
                cv=toValue*f1.to.value;
        }
-       
+
    }
-   
+
       function speedConvert()
    {
        var TO="";
        var FROM="";
        var result="";
-       
+
        for(var i=0;i<3;i++)
        {
            if(f1.to.selectedIndex==i)
                TO=f1.to.options[i].getAttribute('data-cname');
-           
+
            if(f1.from.selectedIndex==i)
                FROM=f1.from.options[i].getAttribute('data-cname');
        }
-       
+
        var resultC=(f1.c1.value*cv).toFixed(4);
        result+="<h3>"+f1.c1.value+" "+FROM+" = "+resultC+" "+TO;
        document.getElementById("result").innerHTML=result;
-       
+
    }
-   
-   
+
+
 </script>
-
-
-
-
 </head>
 <body>
 <div id="wrapper">
@@ -104,7 +100,7 @@
               convert and to what unit you want to convert.
           </p>
           <br />
-          
+
               <form name="f1">
                   <center>
                       <table cellpadding="50">
@@ -129,7 +125,7 @@
                       <td><input type="button" value="Convert" onClick="speedConvert()"></td>
                  </tr>
               </table>
-                 
+
           </form>
           <br><br>
           <p>

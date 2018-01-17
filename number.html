@@ -15,18 +15,18 @@
        var result="";
        var base;
        var no=f1.c1.value;
-       
+
        for(var i=0;i<4;i++)
        {
            if(f1.from.selectedIndex==i)
                base=f1.from.value;
        }
-       
+
        if(base==10)
        {
            for(i=0;i<no.length;i++)
            {
-               
+
                 if(!(no.charCodeAt(i)>47&&no.charCodeAt(i)<58))
                 {
                     document.getElementById("result").innerHTML="Please enter input value in correct format.<br>Binary: 1 or 0 accepted<br>Octal: 0 to 8 accepted<br>HexaDecimal: 0-9 and a-f accepted";
@@ -34,12 +34,12 @@
                 }
            }
        }
-       
+
        if(base==2)
        {
            for(i=0;i<no.length;i++)
            {
-               
+
                 if(no.charAt(i)!=='1'&&no.charAt(i)!=='0')
                 {
                     document.getElementById("result").innerHTML="Please enter input value in correct format.<br>Binary: 1 or 0 accepted<br>Octal: 0 to 7 accepted<br>HexaDecimal: 0-9 and a-f accepted";
@@ -47,12 +47,12 @@
                 }
            }
        }
-       
+
        if(base==8)
        {
            for(i=0;i<no.length;i++)
            {
-               
+
                 if(!(no.charCodeAt(i)>47&&no.charCodeAt(i)<56))
                 {
                     document.getElementById("result").innerHTML="Please enter input value in correct format.<br>Binary: 1 or 0 accepted<br>Octal: 0 to 7 accepted<br>HexaDecimal: 0-9 and a-f accepted";
@@ -60,12 +60,12 @@
                 }
            }
        }
-       
+
        if(base==16)
        {
            for(i=0;i<no.length;i++)
            {
-               
+
                 if(!((no.charCodeAt(i)>47&&no.charCodeAt(i)<58)||(no.charCodeAt(i)>64&&no.charCodeAt(i)<71)||(no.charCodeAt(i)>96&&no.charCodeAt(i)<103)))
                 {
                     document.getElementById("result").innerHTML="Please enter input value in correct format.<br>Binary: 1 or 0 accepted<br>Octal: 0 to 7 accepted<br>HexaDecimal: 0-9 and a-f accepted";
@@ -73,36 +73,33 @@
                 }
            }
        }
-       
+
         dec = parseInt(no, base);
-       
+
        for(var i=0;i<4;i++)
        {
            if(f1.to.selectedIndex==i)
                base=f1.to.value;
        }
-       
+
         Result = dec.toString(base);
-        
+
        for(var i=0;i<4;i++)
        {
            if(f1.to.selectedIndex==i)
                TO=f1.to.options[i].getAttribute('data-cname');
-           
+
            if(f1.from.selectedIndex==i)
                FROM=f1.from.options[i].getAttribute('data-cname');
        }
-       
-      
+
+
        result+="<h3>"+FROM+" Number "+no+" is "+Result+" in "+TO;
        document.getElementById("result").innerHTML=result;
    }
-   
-   
+
+
 </script>
-
-
-
 
 </head>
 <body>
@@ -150,7 +147,7 @@
           <p>Convert among the most popular bases of numbers. Currently supported are Binary, Octal, Decimal and Hexadecimal.
           </p>
           <br />
-          
+
               <form name="f1">
                   <center>
                       <table cellpadding="50">
@@ -177,7 +174,7 @@
                       <td><input type="button" value="Convert" onClick="numberConvert()"></td>
                  </tr>
               </table>
-                 
+
           </form>
           <br><br>
           <p>

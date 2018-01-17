@@ -7,30 +7,25 @@
 <link rel="stylesheet" href="css/style-print.css" type="text/css" media="print" />
 
 <script type="text/javascript">
-
-   function angleConvert()
-   {
+   function angleConvert() {
        var TO="";
        var FROM="";
        var result="";
        var to;
        var from;
-       
-       for(var i=0;i<2;i++)
-       {
-           if(f1.to.selectedIndex==i)
-           {
+
+       for(var i=0;i<2;i++) {
+           if(f1.to.selectedIndex==i) {
                to=to=f1.to.value;
                TO=f1.to.options[i].getAttribute('data-cname');
            }
-           
-           if(f1.from.selectedIndex==i)
-           {
+
+           if(f1.from.selectedIndex==i) {
                from=f1.from.value;
                FROM=f1.from.options[i].getAttribute('data-cname');
            }
        }
-       
+
        var angleO=f1.c1.value;
        var angleN;
        if(from=="D")
@@ -40,27 +35,23 @@
            else if(to=="D")
                angleN=angleO;
        }
-       
-       if(from=="R")
-       {
+
+       if(from=="R") {
            if(to=="D")
                angleN=angleO * 57.295;
            else if(to=="R")
                angleN=angleO;
        }
 
-       
+
        var angleOS=parseFloat(angleO).toFixed(1);
        var angleNS=parseFloat(angleN).toFixed(1);
        result+="<h3>"+angleOS+" "+FROM+" = "+angleNS+" "+TO;
        document.getElementById("result").innerHTML=result;
    }
-   
-   
+
+
 </script>
-
-
-
 
 </head>
 <body>
@@ -108,7 +99,7 @@
           <p>Convert the degree and radian unit of angles.
           </p>
           <br />
-          
+
               <form name="f1">
                   <center>
                       <table cellpadding="50">
@@ -131,7 +122,7 @@
                       <td><input type="button" value="Convert" onClick="angleConvert()"></td>
                  </tr>
               </table>
-                 
+
           </form>
           <br><br>
           <p>
