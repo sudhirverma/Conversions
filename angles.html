@@ -25,7 +25,6 @@
                FROM=f1.from.options[i].getAttribute('data-cname');
            }
        }
-
        var angleO=f1.c1.value;
        var angleN;
        if(from=="D")
@@ -35,15 +34,12 @@
            else if(to=="D")
                angleN=angleO;
        }
-
        if(from=="R") {
            if(to=="D")
                angleN=angleO * 57.295;
            else if(to=="R")
                angleN=angleO;
        }
-
-
        var angleOS=parseFloat(angleO).toFixed(1);
        var angleNS=parseFloat(angleN).toFixed(1);
        result+="<h3>"+angleOS+" "+FROM+" = "+angleNS+" "+TO;
